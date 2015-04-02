@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1" />
+    <script type="text/javascript">
+    function btnClick(cmd,funcName,callback)
+    {
+        alert("1");
+        window.location.href="mfa://"+cmd+"/"+funcName+"?param={\"callbackId\":\""+callback+"\"}";
+    }
+    
+    function btnClick2(cmd,funcName,callback)
+    {
+        //alert("22222");
+        window.location.href="mfa://"+cmd+"/"+funcName+"?param={\"callbackId\":\""+callback+"\",\"message\":\"testMessage\",\"title\":\"TEST\"}";
+    }
+    function getImage(imageBase64,width,height)
+    {
+        //alert("2");
+        var imgs=document.getElementById("img2");
+        imgs.src="data:image/jpg;base64,"+imageBase64;
+        setTimeout(function(){alert("222");},30);
+    }
+    function AL2(test)
+    {
+        
+        alert(test);
+    }
+        function getBar(imageBase64,bar,width,height)
+        {
+            var imgs=document.getElementById("img2");
+            var txt=document.getElementById("textBoxBarCode");
+            txt.value=bar;
+            imgs.src="data:image/jpg;base64,"+imageBase64;
+            alert("3");
+        }
+    </script>
+</head>
+<body>
+
+    <p>
+        <input id="Button1" type="button" value="camera" onclick="btnClick('TestImage','callPhotoLibrary','getImage')" width="200px"/><input id="Button2" type="button" value="album" onclick="btnClick('album','getImage')" width="200px"/>
+    <input id="Button3" type="button" value="zbar" onclick="btnClick('TestAlertView','test','AL2')" width="200px"/><br/>
+        <input id="textBoxBarCode" type="text" value="" width="200px"/><br/><hr/>
+        <img id="img2" alt="" src="" style="width:370,height:320" />
+   </p>
+   
+   <input id="Button4" type="button" value="testAlert" onclick="btnClick2('AlertView','showAlert','aa')" width="200px"/>
+
+</body>
+</html>
